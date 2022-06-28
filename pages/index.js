@@ -48,22 +48,21 @@ export const NavigationMenuDemo = () => {
 }
 
 const NavigationMenu = styled(NavigationMenuPrimitive.Root, {
-  border: '2px solid red',
   position: 'relative',
   display: 'flex',
-  justifyContent: 'center',
+  flexDirection: 'column',
   width: '100vw',
   zIndex: 999,
 })
 
 const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
   border: '2px solid yellow',
-  // all: 'unset',
+  position: 'absolute',
   display: 'flex',
   justifyContent: 'center',
   listStyle: 'none',
   padding: '10px',
-  zIndex: 999,
+  zIndex: 9999,
 })
 
 // TRIGGER
@@ -120,21 +119,23 @@ const NavigationMenuLink = styled(NavigationMenuPrimitive.Link, {
 })
 
 const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
-  position: 'relative',
+  // position: 'absolute',
   width: '100%',
   backgroundColor: 'white',
   overflow: 'hidden',
   height: 'var(--radix-navigation-menu-viewport-height)',
+  zIndex: 1,
 })
 
 const ViewportPosition = styled('div', {
-  position: 'absolute',
+  // position: 'absolute',
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
   top: '100%',
   left: 0,
   perspective: '2000px',
+  zIndex: 1,
 })
 
 export default NavigationMenuDemo
