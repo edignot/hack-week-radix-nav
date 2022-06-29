@@ -118,6 +118,7 @@ const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
 
 const NavigationMenuItem = styled(NavigationMenuPrimitive.Item, {})
 
+// eslint-disable-next-line react/display-name
 const NavigationMenuTrigger = React.forwardRef(
   ({ children, ...props }, forwardedRef) => (
     <StyledTrigger {...props} ref={forwardedRef}>
