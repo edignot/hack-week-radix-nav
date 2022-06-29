@@ -4,28 +4,10 @@ import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { CaretDownIcon } from '@radix-ui/react-icons'
 import { violet, blackA } from '@radix-ui/colors'
 
-const enterFromRight = keyframes({
-  from: { transform: 'translateX(200px)', opacity: 0 },
-  to: { transform: 'translateX(0)', opacity: 1 },
-})
-const enterFromLeft = keyframes({
-  from: { transform: 'translateX(-200px)', opacity: 0 },
-  to: { transform: 'translateX(0)', opacity: 1 },
-})
-const exitToRight = keyframes({
-  from: { transform: 'translateX(0)', opacity: 1 },
-  to: { transform: 'translateX(200px)', opacity: 0 },
-})
-const exitToLeft = keyframes({
-  from: { transform: 'translateX(0)', opacity: 1 },
-  to: { transform: 'translateX(-200px)', opacity: 0 },
-})
-
 export const NavigationMenuDemo = () => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        {/* ITEM1 */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>
             <Text type="navTrigger">Features</Text>
@@ -48,22 +30,48 @@ export const NavigationMenuDemo = () => {
             </NavigationMenuLink>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        {/* ITEM2 */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>
             <Text type="navTrigger">Resources</Text>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <NavigationMenuLink> HI </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Context Menu</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Server Side Rendering</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Toggle Group</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Visually Hidden</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Navigation Menu</Text>
+            </NavigationMenuLink>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        {/* ITEM3 */}
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <Text type="navTrigger">Learning</Text>
+            <Text type="navTrigger">Tutorials</Text>
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <NavigationMenuLink> HI </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Blog Posts</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Toggle Group</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Visually Hidden</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Server Side Rendering</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Context Menu</Text>
+            </NavigationMenuLink>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -75,19 +83,21 @@ export const NavigationMenuDemo = () => {
   )
 }
 
-const Text = styled('p', {
-  variants: {
-    type: {
-      navTrigger: {
-        fontSize: '1.2rem',
-        textTransform: 'uppercase',
-      },
-      navLink: {
-        fontSize: '2rem',
-        fontWeight: '200',
-      },
-    },
-  },
+const enterFromRight = keyframes({
+  from: { transform: 'translateX(200px)', opacity: 0 },
+  to: { transform: 'translateX(0)', opacity: 1 },
+})
+const enterFromLeft = keyframes({
+  from: { transform: 'translateX(-200px)', opacity: 0 },
+  to: { transform: 'translateX(0)', opacity: 1 },
+})
+const exitToRight = keyframes({
+  from: { transform: 'translateX(0)', opacity: 1 },
+  to: { transform: 'translateX(200px)', opacity: 0 },
+})
+const exitToLeft = keyframes({
+  from: { transform: 'translateX(0)', opacity: 1 },
+  to: { transform: 'translateX(-200px)', opacity: 0 },
 })
 
 const NavigationMenu = styled(NavigationMenuPrimitive.Root, {
@@ -136,12 +146,8 @@ const StyledCaret = styled(CaretDownIcon, {
 })
 
 const NavigationMenuContent = styled(NavigationMenuPrimitive.Content, {
-  border: '2px solid purple',
   paddingTop: '100px',
   paddingBottom: '30px',
-  // width: '100vw',
-
-  // position: 'absolute',
   left: 0,
   right: 0,
   marginLeft: 'auto',
@@ -154,7 +160,7 @@ const NavigationMenuContent = styled(NavigationMenuPrimitive.Content, {
   minHeight: '50vh',
   color: 'white',
   '@media (prefers-reduced-motion: no-preference)': {
-    animationDuration: '250ms',
+    animationDuration: '150ms',
     animationTimingFunction: 'ease',
     '&[data-motion="from-start"]': { animationName: enterFromLeft },
     '&[data-motion="from-end"]': { animationName: enterFromRight },
@@ -168,7 +174,6 @@ const NavigationMenuLink = styled(NavigationMenuPrimitive.Link, {
 })
 
 const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
-  all: 'unset',
   width: '100%',
   backgroundColor: blackA.blackA12,
   overflow: 'hidden',
@@ -177,14 +182,24 @@ const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
 })
 
 const ViewportPosition = styled('div', {
-  all: 'unset',
   display: 'flex',
   justifyContent: 'center',
-  width: '100%',
-  top: '100%',
-  left: 0,
-  perspective: '2000px',
   zIndex: 1,
+})
+
+const Text = styled('p', {
+  variants: {
+    type: {
+      navTrigger: {
+        fontSize: '1.2rem',
+        textTransform: 'uppercase',
+      },
+      navLink: {
+        fontSize: '2rem',
+        fontWeight: '200',
+      },
+    },
+  },
 })
 
 export default NavigationMenuDemo
