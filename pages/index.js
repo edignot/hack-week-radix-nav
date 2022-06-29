@@ -106,9 +106,7 @@ const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
   zIndex: 999,
 })
 
-const NavigationMenuItem = styled(NavigationMenuPrimitive.Item, {
-  padding: '30px',
-})
+const NavigationMenuItem = styled(NavigationMenuPrimitive.Item, {})
 
 const NavigationMenuTrigger = React.forwardRef(
   ({ children, ...props }, forwardedRef) => (
@@ -124,6 +122,7 @@ const StyledTrigger = styled(NavigationMenuPrimitive.Trigger, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
+  padding: '30px',
   gap: 2,
   color: 'white',
 })
@@ -135,11 +134,22 @@ const StyledCaret = styled(CaretDownIcon, {
     transition: 'transform 250ms ease',
   },
 })
-// TRIGGER //
 
 const NavigationMenuContent = styled(NavigationMenuPrimitive.Content, {
-  position: 'absolute',
-  width: '100vw',
+  border: '2px solid purple',
+  paddingTop: '100px',
+  paddingBottom: '30px',
+  // width: '100vw',
+
+  // position: 'absolute',
+  left: 0,
+  right: 0,
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+
   height: 'auto',
   minHeight: '50vh',
   color: 'white',
