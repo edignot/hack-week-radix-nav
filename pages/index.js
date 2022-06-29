@@ -2,7 +2,7 @@ import React from 'react'
 import { styled, keyframes } from '@stitches/react'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { CaretDownIcon } from '@radix-ui/react-icons'
-import { violet, mauve, blackA } from '@radix-ui/colors'
+import { violet, blackA } from '@radix-ui/colors'
 
 const enterFromRight = keyframes({
   from: { transform: 'translateX(200px)', opacity: 0 },
@@ -25,19 +25,47 @@ export const NavigationMenuDemo = () => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuPrimitive.Item>
-          <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+        {/* ITEM1 */}
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>
+            <Text type="navTrigger">Features</Text>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <NavigationMenuLink>
+              <Text type="navLink">Navigation Menu</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Toggle Group</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Visually Hidden</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Server Side Rendering</Text>
+            </NavigationMenuLink>
+            <NavigationMenuLink>
+              <Text type="navLink">Context Menu</Text>
+            </NavigationMenuLink>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        {/* ITEM2 */}
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>
+            <Text type="navTrigger">Resources</Text>
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <NavigationMenuLink> HI </NavigationMenuLink>
           </NavigationMenuContent>
-        </NavigationMenuPrimitive.Item>
-
-        <NavigationMenuPrimitive.Item>
-          <NavigationMenuTrigger>Learn</NavigationMenuTrigger>
+        </NavigationMenuItem>
+        {/* ITEM3 */}
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>
+            <Text type="navTrigger">Learning</Text>
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <NavigationMenuLink> HI </NavigationMenuLink>
           </NavigationMenuContent>
-        </NavigationMenuPrimitive.Item>
+        </NavigationMenuItem>
       </NavigationMenuList>
 
       <ViewportPosition>
@@ -47,25 +75,41 @@ export const NavigationMenuDemo = () => {
   )
 }
 
+const Text = styled('p', {
+  variants: {
+    type: {
+      navTrigger: {
+        fontSize: '1.2rem',
+        textTransform: 'uppercase',
+      },
+      navLink: {
+        fontSize: '2rem',
+        fontWeight: '200',
+      },
+    },
+  },
+})
+
 const NavigationMenu = styled(NavigationMenuPrimitive.Root, {
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100vw',
-  zIndex: 999,
+  border: '1px solid transparent',
 })
 
 const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
-  border: '2px solid yellow',
   position: 'absolute',
+  left: 0,
+  right: 0,
+  marginLeft: 'auto',
+  marginRight: 'auto',
   display: 'flex',
   justifyContent: 'center',
   listStyle: 'none',
-  padding: '10px',
-  zIndex: 9999,
+  zIndex: 999,
 })
 
-// TRIGGER
+const NavigationMenuItem = styled(NavigationMenuPrimitive.Item, {
+  padding: '30px',
+})
+
 const NavigationMenuTrigger = React.forwardRef(
   ({ children, ...props }, forwardedRef) => (
     <StyledTrigger {...props} ref={forwardedRef}>
@@ -76,7 +120,6 @@ const NavigationMenuTrigger = React.forwardRef(
 )
 
 const StyledTrigger = styled(NavigationMenuPrimitive.Trigger, {
-  border: '2px solid yellow',
   all: 'unset',
   display: 'flex',
   alignItems: 'center',
@@ -86,8 +129,6 @@ const StyledTrigger = styled(NavigationMenuPrimitive.Trigger, {
 })
 
 const StyledCaret = styled(CaretDownIcon, {
-  border: '2px solid yellow',
-  position: 'relative',
   color: 'white',
   '[data-state=open] &': { transform: 'rotate(-180deg)' },
   '@media (prefers-reduced-motion: no-preference)': {
@@ -98,11 +139,10 @@ const StyledCaret = styled(CaretDownIcon, {
 
 const NavigationMenuContent = styled(NavigationMenuPrimitive.Content, {
   position: 'absolute',
-  // top: 0,
-  // left: 0,
   width: '100vw',
   height: 'auto',
-  minHeight: '30vh',
+  minHeight: '50vh',
+  color: 'white',
   '@media (prefers-reduced-motion: no-preference)': {
     animationDuration: '250ms',
     animationTimingFunction: 'ease',
@@ -114,21 +154,20 @@ const NavigationMenuContent = styled(NavigationMenuPrimitive.Content, {
 })
 
 const NavigationMenuLink = styled(NavigationMenuPrimitive.Link, {
-  fontSize: 50,
   lineHeight: 1,
 })
 
 const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
-  // position: 'absolute',
+  all: 'unset',
   width: '100%',
-  backgroundColor: 'white',
+  backgroundColor: blackA.blackA12,
   overflow: 'hidden',
   height: 'var(--radix-navigation-menu-viewport-height)',
   zIndex: 1,
 })
 
 const ViewportPosition = styled('div', {
-  // position: 'absolute',
+  all: 'unset',
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
